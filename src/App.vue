@@ -1,40 +1,46 @@
 <template>
   <div>
-    <nav class="navbar is-warning is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          PlaySchool
-        </a>
-
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <router-link class="navbar-item" to="/">PlaySchool</router-link>
+        <a role="button" class="navbar-burger burger" data-target="navMenu" >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="field is-grouped">
-            <p class="control">
-              <a class="button">
-                  <span class="icon">
-                    <i class="fas fa-twitter" aria-hidden="true"></i>
-                  </span>
-                <span>Tweet</span>
-              </a>
-            </p>
-            <p class="control">
-              <a class="button is-primary">
-                  <span class="icon">
-                    <i class="fas fa-download" aria-hidden="true"></i>
-                  </span>
-                <span>Download</span>
-              </a>
-            </p>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <router-link class="navbar-item" to="/signup">
+            <span class="icon is-small"><i class="fa fa-refresh"></i></span>
+            <span>SignUp</span>
+          </router-link>
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="button">
+                    <span class="icon">
+                      <i class="fas fa-twitter" aria-hidden="true"></i>
+                    </span>
+                  <span>Tweet</span>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button is-primary">
+                    <span class="icon">
+                      <i class="fas fa-download" aria-hidden="true"></i>
+                    </span>
+                  <span>Download</span>
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </nav>
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 

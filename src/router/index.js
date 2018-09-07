@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+import SignUp from '@/components/auth/Signup'
 
 Vue.use(Router)
 
@@ -11,6 +12,7 @@ export default new Router({
       name: 'Main',
       component: HelloWorld
     },
+    { path: '/signup', name: 'signup', component: SignUp },
     {
       path: '/console',
       children: [
@@ -37,5 +39,6 @@ export default new Router({
     {
       path: 'group'
     }
-  ]
+  ],
+  mode: 'history'
 })

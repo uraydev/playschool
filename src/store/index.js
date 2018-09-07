@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as types from './types'
-import common from './modules/common'
+// import common from './modules/common'
 import child from './modules/child'
 import demand from './modules/demand'
 import kindergarden from './modules/kindergarden'
@@ -39,7 +39,7 @@ export default new Vuex.Store({
     getLoadedAppTitle: state => state.loadedAppTitle
   },
   modules: {
-    common,
+    // common,
     child,
     demand,
     dialog,
