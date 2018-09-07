@@ -12,7 +12,7 @@
       <div class="navbar-menu">
         <div class="navbar-end">
           <router-link class="navbar-item" to="/signup">
-            <span class="icon is-small"><i class="fa fa-refresh"></i></span>
+            <span class="icon"><i class="fa fa-refresh"></i></span>
             <span>SignUp</span>
           </router-link>
           <div class="navbar-item">
