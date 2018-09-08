@@ -8,9 +8,7 @@ import 'buefy/lib/buefy.css'
 import store from './store'
 import 'font-awesome/css/font-awesome.css'
 
-Vue.use(Buefy, {
-  defaultIconPack: 'fa'
-})
+Vue.use(Buefy)
 
 Vue.config.productionTip = false
 

@@ -1,3 +1,6 @@
+// Auth
+export const SET_USER = 'setUser'
+
 // Main
 export const SET_LOADED_APP_TITLE = 'setLoadedAppTitle'
 

@@ -7,20 +7,21 @@ import demand from './modules/demand'
 import kindergarden from './modules/kindergarden'
 import user from './modules/user'
 import dialog from './modules/dialog'
+import auth from './modules/auth'
 
 const debug = process.env.NODE_ENV !== 'production'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  plugins: [
-    store => {
-      store.subscribeAction((action, state) => {
-        store.commit('setLoading', action.type)
-        // store.commit('clearMessage')
-      })
-    }
-  ],
+  // plugins: [
+  //   store => {
+  //     store.subscribeAction((action, state) => {
+  //       store.commit('setLoading', action.type)
+  //       // store.commit('clearMessage')
+  //     })
+  //   }
+  // ],
   state: {
     loadedAppTitle: 'PlaySchool'
   },
@@ -44,7 +45,8 @@ export default new Vuex.Store({
     demand,
     dialog,
     kindergarden,
-    user
+    user,
+    auth
   },
   strict: debug
 })

@@ -10,12 +10,25 @@
         </a>
       </div>
       <div class="navbar-menu">
-        <div class="navbar-end">
+        <div class="navbar-start" v-if="auth">
+          <router-link v-for="menu in user.menu" :key="menu.id" class="navbar-item" :to="menu.link">
+            <span class="icon"><i :class="menu.icon"></i></span>
+            <span>{{menu.title}}</span>
+          </router-link>
+        </div>
+        <div class="navbar-end" v-if="auth">
+          <span>{{user.fio}}</span>
+          <a class="navbar-item" @click="logout">
+            <span class="icon"><i class="fa fa-sign-out"></i></span>
+            <span>Logout</span>
+          </a>
+        </div>
+        <div class="navbar-end" v-if="!auth">
           <router-link class="navbar-item" to="/signup">
             <span class="icon"><i class="fa fa-refresh"></i></span>
             <span>SignUp</span>
           </router-link>
-          <div class="navbar-item">
+          <!-- <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
                 <a class="button">
@@ -34,7 +47,7 @@
                 </a>
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </nav>
@@ -45,7 +58,13 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
+  computed: mapGetters({
+    user: 'auth/user',
+    auth: 'auth/auth'
+  }),
   data () {
     return {
       clipped: false,
@@ -59,6 +78,11 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('auth/logout')
     }
   },
   name: 'App'
