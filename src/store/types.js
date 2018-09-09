@@ -1,3 +1,8 @@
+// Groups
+export const CREATE_GROUP = 'CREATE_GROUP'
+export const SAVE_GROUP = 'SAVE_GROUP'
+export const RECIVE_GROUPS = 'RECIVE_GROUPS'
+
 // Auth
 export const SET_USER = 'setUser'
 

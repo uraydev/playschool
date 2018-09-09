@@ -80,6 +80,9 @@ export default {
       title: 'Vuetify.js'
     }
   },
+  created () {
+    this.$store.dispatch('auth/login', 'u1')
+  },
   methods: {
     logout () {
       this.$store.dispatch('auth/logout')

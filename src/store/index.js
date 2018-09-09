@@ -8,6 +8,7 @@ import kindergarden from './modules/kindergarden'
 import user from './modules/user'
 import dialog from './modules/dialog'
 import auth from './modules/auth'
+import group from './modules/group'
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -46,7 +47,8 @@ export default new Vuex.Store({
     dialog,
     kindergarden,
     user,
-    auth
+    auth,
+    group
   },
   strict: debug
 })

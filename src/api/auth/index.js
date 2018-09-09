@@ -15,12 +15,14 @@ const users = [
     id: 'u1',
     email: 'login1',
     fio: 'Иванов Иван Иванович',
-    role: 'teacher',
+    role: 'clerk',
     menu: [
       {id: 'm1', icon: 'fa fa-lemon-o', title: 'Dashboard', link: '/dashboard'},
-      {id: 'm2', icon: 'fa fa-lemon-o', title: 'Teacher Module', link: '/teacher'},
+      {id: 'm2', icon: 'fa fa-lemon-o', title: 'Clerk Module', link: '/clerk'},
       {id: 'm3', icon: 'fa fa-lemon-o', title: 'Some Module', link: '/other'}
-    ]
+    ],
+    modules: ['ClerkComponent'],
+    permissions: ['GroupListView', 'ChildrenListView']
   },
   {
     id: 'u2',
