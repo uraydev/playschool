@@ -14,6 +14,13 @@ export default {
         resolve(group)
       })
     }
+  },
+  remove (group) {
+    if (isLocal === true) {
+      return new Promise((resolve) => {
+        resolve(group)
+      })
+    }
   }
 }
 

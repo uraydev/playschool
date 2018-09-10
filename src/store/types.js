@@ -1,4 +1,5 @@
 // Groups
+export const REMOVE_GROUP = 'REMOVE_GROUP'
 export const CREATE_GROUP = 'CREATE_GROUP'
 export const SAVE_GROUP = 'SAVE_GROUP'
 export const RECIVE_GROUPS = 'RECIVE_GROUPS'

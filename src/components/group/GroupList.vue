@@ -7,7 +7,11 @@
       <li>
         <ul>
           <li v-for="group in model" :key="group.id">
-            <a @click="showEditor(group)" v-if="group.id !== currentEditGroupId">{{group.name}} <i class="is-pulled-right fa fa-pencil"></i></a>
+            <a v-if="group.id !== currentEditGroupId">
+              {{group.name}}
+              <i class="is-pulled-right fa fa-remove" @click="removeGroup(group)">&nbsp;</i>
+              <i class="is-pulled-right fa fa-pencil" @click="showEditor(group)">&nbsp;</i>
+            </a>
             <div class="field has-addons" v-if="group.id === currentEditGroupId">
               <div class="control is-expanded">
                 <input type="text" v-model="currentEditGroupName" placeholder="Введите название группы" class="input">
@@ -57,6 +61,9 @@ export default {
     },
     createNewGroup () {
       this.$store.dispatch('group/newGroup')
+    },
+    removeGroup (group) {
+      this.$store.dispatch('group/removeGroup', group)
     }
   }
 }

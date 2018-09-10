@@ -5,10 +5,6 @@ const state = {
   model: []
 }
 
-// const fakeUser = {
-//   id: '123456789'
-// }
-
 // actions
 const actions = {
   reciveGroups ({commit}) {
@@ -21,6 +17,9 @@ const actions = {
     const countGroups = getters.model.length
     const newGroup = {id: countGroups + 1, name: 'Новая группа №' + countGroups}
     context.store(newGroup).then(x => commit(types.CREATE_GROUP, x))
+  },
+  removeGroup ({commit}, group) {
+    context.remove(group).then(x => commit(types.REMOVE_GROUP, x))
   }
 }
 
@@ -35,6 +34,13 @@ const mutations = {
   },
   [types.CREATE_GROUP] (state, payload) {
     state.model.push(payload)
+  },
+  [types.REMOVE_GROUP] (state, payload) {
+    const group = state.model.find(x => x.id === payload.id)
+    if (group !== null) {
+      const pos = state.model.indexOf(group)
+      state.model.splice(pos, 1)
+    }
   }
 }
 
