@@ -16,6 +16,9 @@
               <div class="control is-expanded">
                 <input type="text" v-model="currentEditChildFio" placeholder="Введите ФИО ребенка" class="input">
               </div>
+              <div class="control is-expanded">
+                <input type="date" ref="calendarTrigger" class="input">
+              </div>
               <div class="control">
                 <button class="button is-info" @click="saveChild(child)">Сохранить</button>
               </div>
@@ -32,6 +35,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import bulmaCalendar from 'bulma-calendar'
 
 export default {
   computed: mapGetters({
@@ -43,6 +47,14 @@ export default {
       currentEditChildFio: '',
       currentEditChildDob: ''
     }
+  },
+  mounted () {
+    console.log(this.$refs.calendarTrigger)
+    const calendar = bulmaCalendar.attach(this.$refs.calendarTrigger, {
+      startDate: this.date
+    })[0]
+    console.log(calendar)
+    // calendar.on('date:selected', e => (this.date = e.start || null))
   },
   created () {
     this.$store.dispatch('child/reciveChildren')
