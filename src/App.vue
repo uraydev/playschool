@@ -17,11 +17,22 @@
           </router-link>
         </div>
         <div class="navbar-end" v-if="auth">
-          <span>{{user.fio}}</span>
-          <a class="navbar-item" @click="logout">
-            <span class="icon"><i class="fa fa-sign-out"></i></span>
-            <span>Logout</span>
-          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" @click="">
+              {{user.fio}}
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="#">
+                <span class="icon"><i class="fa fa-cogs"></i></span>
+                <span>Settings</span>
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" @click="logout">
+                <span class="icon"><i class="fa fa-sign-out"></i></span>
+                <span>Logout</span>
+              </a>
+            </div>
+          </div>
         </div>
         <div class="navbar-end" v-if="!auth">
           <router-link class="navbar-item" to="/signup">

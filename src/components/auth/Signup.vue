@@ -6,7 +6,7 @@
           <span class="icon">
             <i class="fa fa-user"></i>
           </span>
-          <span>Sign Up Teacher</span>
+          <span>Sign Up Clerk</span>
         </a>
         <a class="button is-large is-success" @click="login('u2')">
           <span class="icon">
@@ -24,7 +24,7 @@
           <span class="icon">
             <i class="fa fa-user"></i>
           </span>
-          <span>Sign Up Clerk</span>
+          <span>Sign Up Teacher</span>
         </a>
         <a class="button is-large is-success" @click="login('u5')">
           <span class="icon">

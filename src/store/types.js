@@ -1,3 +1,9 @@
+// Children
+export const REMOVE_CHILD = 'REMOVE_CHILD'
+export const CREATE_CHILD = 'CREATE_CHILD'
+export const SAVE_CHILD = 'SAVE_CHILD'
+export const RECIVE_CHILDREN = 'RECIVE_CHILDREN'
+
 // Groups
 export const REMOVE_GROUP = 'REMOVE_GROUP'
 export const CREATE_GROUP = 'CREATE_GROUP'

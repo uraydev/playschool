@@ -17,9 +17,8 @@ const users = [
     fio: 'Иванов Иван Иванович',
     role: 'clerk',
     menu: [
-      {id: 'm1', icon: 'fa fa-lemon-o', title: 'Dashboard', link: '/dashboard'},
-      {id: 'm2', icon: 'fa fa-lemon-o', title: 'Clerk Module', link: '/clerk'},
-      {id: 'm3', icon: 'fa fa-lemon-o', title: 'Some Module', link: '/other'}
+      {id: 'm2', icon: 'fa fa-cube', title: 'Делопроизводитель', link: '/clerk'},
+      {id: 'm3', icon: 'fa fa-cube', title: 'Some Module', link: '/other'}
     ],
     modules: ['ClerkComponent'],
     permissions: ['GroupListView', 'ChildrenListView']
@@ -30,8 +29,8 @@ const users = [
     fio: 'Петров Петр Петрович',
     role: 'doctor',
     menu: [
-      {id: 'm1', icon: 'fa fa-lemon-o', title: 'Dashboard', link: '/dashboard'},
-      {id: 'm3', icon: 'fa fa-lemon-o', title: 'Some Module', link: '/other'}
+      {id: 'm1', icon: 'fa fa-cube', title: 'Dashboard', link: '/dashboard'},
+      {id: 'm3', icon: 'fa fa-cube', title: 'Some Module', link: '/other'}
     ]
   },
   {
@@ -40,7 +39,7 @@ const users = [
     fio: 'Сергеев Сергей Сергеевич',
     role: 'supplier',
     menu: [
-      {id: 'm1', icon: 'fa fa-lemon-o', title: 'Dashboard', link: '/dashboard'}
+      {id: 'm1', icon: 'fa fa-cube', title: 'Dashboard', link: '/dashboard'}
     ]},
   {id: 'u4', email: 'login4', fio: 'Александров Александ'},
   {id: 'u5', email: 'login5', fio: 'Админов Админ'}
