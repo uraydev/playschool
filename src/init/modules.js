@@ -19,5 +19,15 @@ export default [
     menu: [
       {id: 'm1', icon: 'fa fa-cube', title: 'Dashboard', link: '/dashboard'}
     ]
+  },
+  {
+    role: 'teacher',
+    menu: [
+    ]
+  },
+  {
+    role: 'admin',
+    menu: [
+    ]
   }
 ]

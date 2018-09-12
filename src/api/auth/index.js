@@ -29,6 +29,16 @@ const users = [
     fio: 'Сергеев Сергей Сергеевич',
     role: 'supplier'
   },
-  {id: 'u4', email: 'login4', fio: 'Александров Александ'},
-  {id: 'u5', email: 'login5', fio: 'Админов Админ'}
+  {
+    id: 'u4',
+    email: 'login4',
+    fio: 'Александров Александ',
+    role: 'teacher'
+  },
+  {
+    id: 'u5',
+    email: 'login5',
+    fio: 'Админов Админ',
+    role: 'admin'
+  }
 ]
