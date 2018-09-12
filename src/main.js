@@ -20,5 +20,8 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    this.$store.dispatch('auth/login', 'u1')
+  }
 })

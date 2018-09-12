@@ -1,0 +1,35 @@
+import modules from '../../../init/modules'
+
+const state = {
+  modules
+}
+
+// const fakeUser = {
+//   id: '123456789'
+// }
+
+// actions
+const actions = {
+}
+
+// mutations
+const mutations = {
+}
+
+// getters
+const getters = {
+  getMenu: (state, getters, rootState, rootGetters) => {
+    const user = rootGetters['auth/user']
+    const role = state.modules.find(x => x.role === user.role)
+    if (role === null) return []
+    return role.menu
+  }
+}
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations,
+  namespaced: true
+}

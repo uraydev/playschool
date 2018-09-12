@@ -5,7 +5,7 @@ import SignUp from '@/components/auth/Signup'
 import Dashboard from '@/components/dashboard/Dashboard'
 import TeacherModule from '@/components/dashboard/TeacherModule'
 import OtherModule from '@/components/dashboard/OtherModule'
-import ClerkComponent from '@/components/dashboard/ClerkComponent'
+// import ClerkComponent from '@/components/dashboard/ClerkComponent'
 
 Vue.use(Router)
 
@@ -20,7 +20,7 @@ export default new Router({
     { path: '/dashboard', name: 'dashboard', component: Dashboard },
     { path: '/teacher', name: 'teacher', component: TeacherModule },
     { path: '/other', name: 'other', component: OtherModule },
-    { path: '/clerk', name: 'clerk', component: ClerkComponent },
+    { path: '/clerk', name: 'clerk', component: () => import('@/components/dashboard/ClerkComponent') },
     {
       path: '/console',
       children: [

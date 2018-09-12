@@ -11,9 +11,9 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-start" v-if="auth">
-          <router-link v-for="menu in user.menu" :key="menu.id" class="navbar-item" :to="menu.link">
-            <span class="icon"><i :class="menu.icon"></i></span>
-            <span>{{menu.title}}</span>
+          <router-link v-for="item in menu" :key="item.id" class="navbar-item" :to="item.link">
+            <span class="icon"><i :class="item.icon"></i></span>
+            <span>{{item.title}}</span>
           </router-link>
         </div>
         <div class="navbar-end" v-if="auth">
@@ -74,7 +74,8 @@ import {mapGetters} from 'vuex'
 export default {
   computed: mapGetters({
     user: 'auth/user',
-    auth: 'auth/auth'
+    auth: 'auth/auth',
+    menu: 'guard/getMenu'
   }),
   data () {
     return {
@@ -90,9 +91,6 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
-  },
-  created () {
-    this.$store.dispatch('auth/login', 'u1')
   },
   methods: {
     logout () {

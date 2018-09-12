@@ -1,35 +1,48 @@
 <template>
-  <aside class="menu" style="margin-top: 30px;">
-    <p class="menu-label is-active">
-      Дети
-    </p>
-    <ul class="menu-list">
-      <li>
-        <ul>
-          <li v-for="child in model" :key="child.id">
-            <a v-if="child.id !== currentEditChildId">
-              {{child.fio}}
-              <i class="is-pulled-right fa fa-remove" @click="removeChild(child)">&nbsp;</i>
-              <i class="is-pulled-right fa fa-pencil" @click="showEditor(child)">&nbsp;</i>
-            </a>
-            <div class="field has-addons" v-if="child.id === currentEditChildId">
-              <div class="control is-expanded">
-                <input type="text" v-model="currentEditChildFio" placeholder="Введите ФИО ребенка" class="input">
-              </div>
-              <div class="control is-expanded">
-                <b-datepicker placeholder="Дата рождения" icon="calendar-today" v-model="currentEditChildDob"> </b-datepicker>
-              </div>
-              <div class="control">
-                <button class="button is-info" @click="saveChild(child)">Сохранить</button>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <a class="button is-success" @click="createNewChild">
-      + Добавить ребёнка
-    </a>
+  <aside class="panel">
+    <div class="panel-heading">Дети</div>
+    <div class="panel-block">
+      <p class="control has-icons-left">
+        <input type="text" class="input is-small" placeholder="Поиск" v-model="search">
+        <span class="icon is-smal is-left">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+      </p>
+    </div>
+    <div class="panel-block" v-for="child in children" :key="child.id" >
+      <div class="tile" style="align-items: center" v-if="child.id !== currentEditChildId">
+        <span class="panel-icon">
+          <i class="fa fa-book"></i>
+        </span>
+        {{child.fio}}
+        <div style="margin-left: auto">
+          <i class="is-pulled-right fa fa-remove" @click="removeChild(child)">&nbsp;</i>
+          <i class="is-pulled-right fa fa-pencil" @click="showEditor(child)">&nbsp;</i>
+        </div>
+      </div>
+      <div class="tile is-vertical" v-if="child.id === currentEditChildId">
+        <div class="field">
+          <div class="control">
+            <input type="text" v-model="currentEditChildFio" placeholder="Введите ФИО ребенка" class="input">
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <b-datepicker placeholder="Дата рождения" icon="calendar-today" v-model="currentEditChildDob"> </b-datepicker>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-info is-fullwidth" @click="saveChild(child)">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-block">
+      <a class="button is-success is-fullwidth is-outlined" @click="createNewChild">
+        + Добавить ребёнка
+      </a>
+    </div>
   </aside>
 </template>
 
@@ -39,28 +52,24 @@ import {mapGetters} from 'vuex'
 // import 'bulma-calendar/dist/css/bulma-calendar.min.css'
 
 export default {
-  computed: mapGetters({
-    model: 'child/model'
-  }),
+  computed: {
+    children () {
+      return this.model.filter(x => x.fio.indexOf(this.search) > -1)
+    },
+    ...mapGetters({
+      model: 'child/model'
+    })
+  },
   data () {
     return {
+      search: '',
       currentEditChildId: null,
       currentEditChildFio: '',
       currentEditChildDob: ''
     }
   },
-  mounted () {
-    /*eslint-disable*/
-    // console.log(this.$refs)
-    
-    // calendar.on('date:selected', e => (this.date = e.start || null))
-  },
-  created () {
-    this.$store.dispatch('child/reciveChildren')
-    // const calendar = bulmaCalendar.attach(this.$refs.test123, {
-    //   startDate: new Date()
-    // })
-    // console.log(calendar)
+  async created () {
+    await this.$store.dispatch('child/reciveChildren')
   },
   methods: {
     showEditor (child) {
@@ -78,6 +87,7 @@ export default {
       this.currentEditChildDob = ''
     },
     createNewChild () {
+      this.search = ''
       this.$store.dispatch('child/newChild')
     },
     removeChild (child) {
