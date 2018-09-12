@@ -23,6 +23,13 @@ const getters = {
     const role = state.modules.find(x => x.role === user.role)
     if (role === null) return []
     return role.menu
+  },
+  hasPermission: (state, getters, rootState, rootGetters) => roleName => {
+    const user = rootGetters['auth/user']
+    const role = state.modules.find(x => x.role === user.role)
+    if (role === null) return false
+    const permission = role.permissions.find(x => x === roleName)
+    return roleName === permission
   }
 }
 

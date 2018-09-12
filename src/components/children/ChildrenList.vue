@@ -15,7 +15,7 @@
           <i class="fa fa-user-circle-o"></i>
         </span>
         {{child.fio}}
-        <div style="margin-left: auto">
+        <div style="margin-left: auto"  v-if="hasPermission('ChildrenListEdit')">
           <i class="is-pulled-right fa fa-remove" @click="removeChild(child)">&nbsp;</i>
           <i class="is-pulled-right fa fa-pencil" @click="showEditor(child)">&nbsp;</i>
         </div>
@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="panel-block">
+    <div class="panel-block" v-if="hasPermission('ChildrenListCreate')">
       <a class="button is-success is-fullwidth is-outlined" @click="createNewChild">
         + Добавить ребёнка
       </a>
@@ -48,10 +48,13 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import permissionMixin from '@/mixins/permission'
+
 // import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.js'
 // import 'bulma-calendar/dist/css/bulma-calendar.min.css'
 
 export default {
+  mixins: [permissionMixin],
   computed: {
     children () {
       return this.model.filter(x => x.fio.indexOf(this.search) > -1)

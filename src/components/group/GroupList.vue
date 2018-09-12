@@ -15,7 +15,7 @@
           <i class="fa fa-database"></i>
         </span>
         {{group.name}}
-        <div style="margin-left: auto">
+        <div style="margin-left: auto" v-if="hasPermission('GroupListEdit')">
           <i class="is-pulled-right fa fa-remove" @click="removeGroup(group)">&nbsp;</i>
           <i class="is-pulled-right fa fa-pencil" @click="showEditor(group)">&nbsp;</i>
         </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="panel-block">
+    <div class="panel-block" v-if="hasPermission('GroupListCreate')">
       <a class="button is-info is-fullwidth is-outlined" @click="createNewGroup">
         + Добавить группу
       </a>
@@ -43,8 +43,10 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import permissionMixin from '@/mixins/permission'
 
 export default {
+  mixins: [permissionMixin],
   computed: {
     groups () {
       return this.model.filter(x => x.name.indexOf(this.search) > -1)
