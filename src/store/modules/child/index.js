@@ -30,7 +30,10 @@ const mutations = {
   },
   [types.SAVE_CHILD] (state, payload) {
     const child = state.model.find(x => x.id === payload.id)
-    if (child !== null) child.fio = payload.fio
+    if (child !== null) {
+      child.fio = payload.fio
+      child.dob = payload.dob
+    }
   },
   [types.CREATE_CHILD] (state, payload) {
     state.model.push(payload)

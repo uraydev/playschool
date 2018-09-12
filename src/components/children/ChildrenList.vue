@@ -17,7 +17,7 @@
                 <input type="text" v-model="currentEditChildFio" placeholder="Введите ФИО ребенка" class="input">
               </div>
               <div class="control is-expanded">
-                <input type="date" ref="calendarTrigger" class="input">
+                <b-datepicker placeholder="Дата рождения" icon="calendar-today" v-model="currentEditChildDob"> </b-datepicker>
               </div>
               <div class="control">
                 <button class="button is-info" @click="saveChild(child)">Сохранить</button>
@@ -35,7 +35,8 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import bulmaCalendar from 'bulma-calendar'
+// import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.js'
+// import 'bulma-calendar/dist/css/bulma-calendar.min.css'
 
 export default {
   computed: mapGetters({
@@ -49,15 +50,17 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$refs.calendarTrigger)
-    const calendar = bulmaCalendar.attach(this.$refs.calendarTrigger, {
-      startDate: this.date
-    })[0]
-    console.log(calendar)
+    /*eslint-disable*/
+    // console.log(this.$refs)
+    
     // calendar.on('date:selected', e => (this.date = e.start || null))
   },
   created () {
     this.$store.dispatch('child/reciveChildren')
+    // const calendar = bulmaCalendar.attach(this.$refs.test123, {
+    //   startDate: new Date()
+    // })
+    // console.log(calendar)
   },
   methods: {
     showEditor (child) {
