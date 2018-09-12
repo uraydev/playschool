@@ -12,7 +12,7 @@
     <div class="panel-block" v-for="child in children" :key="child.id" >
       <div class="tile" style="align-items: center" v-if="child.id !== currentEditChildId">
         <span class="panel-icon">
-          <i class="fa fa-book"></i>
+          <i class="fa fa-user-circle-o"></i>
         </span>
         {{child.fio}}
         <div style="margin-left: auto">
