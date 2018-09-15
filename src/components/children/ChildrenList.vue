@@ -16,7 +16,7 @@
         </span>
         {{child.fio}}
         <div style="margin-left: auto"  v-if="hasPermission('ChildrenListEdit')">
-          <i class="is-pulled-right fa fa-remove" @click="removeChild(child)">&nbsp;</i>
+          <i class="is-pulled-right fa fa-remove" @click="removeChildDialog(child)">&nbsp;</i>
           <i class="is-pulled-right fa fa-pencil" @click="showEditor(child)">&nbsp;</i>
         </div>
       </div>
@@ -92,6 +92,14 @@ export default {
     createNewChild () {
       this.search = ''
       this.$store.dispatch('child/newChild')
+    },
+    removeChildDialog (child) {
+      this.$dialog.confirm({
+        title: 'Подтвердите удаление',
+        message: 'Удалить ребенка из списка?',
+        type: 'is-success',
+        onConfirm: () => this.removeChild(child)
+      })
     },
     removeChild (child) {
       this.$store.dispatch('child/removeChild', child)

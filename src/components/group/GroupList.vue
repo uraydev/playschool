@@ -16,7 +16,7 @@
         </span>
         {{group.name}}
         <div style="margin-left: auto" v-if="hasPermission('GroupListEdit')">
-          <i class="is-pulled-right fa fa-remove" @click="removeGroup(group)">&nbsp;</i>
+          <i class="is-pulled-right fa fa-remove" @click="removeGroupDialog(group)">&nbsp;</i>
           <i class="is-pulled-right fa fa-pencil" @click="showEditor(group)">&nbsp;</i>
         </div>
       </div>
@@ -84,6 +84,14 @@ export default {
     },
     removeGroup (group) {
       this.$store.dispatch('group/removeGroup', group)
+    },
+    removeGroupDialog (group) {
+      this.$dialog.confirm({
+        title: 'Подтвердите удаление',
+        message: 'Удалить группу из списка?',
+        type: 'is-success',
+        onConfirm: () => this.removeGroup(group)
+      })
     }
   }
 }
