@@ -21,6 +21,9 @@ export default new Router({
     { path: '/teacher', name: 'teacher', component: () => import('@/components/dashboard/TeacherModule') },
     { path: '/other', name: 'other', component: () => import('@/components/dashboard/OtherModule') },
     { path: '/clerk', name: 'clerk', component: () => import('@/components/dashboard/ClerkComponent') },
+    { path: '/groups', name: 'groups', component: () => import('@/components/group/GroupList') },
+    { path: '/children', name: 'children', component: () => import('@/components/children/ChildrenList') },
+    { path: '/children-group', name: 'children-group', component: () => import('@/components/children-group/ChildrenGroupList') },
     {
       path: '/console',
       children: [

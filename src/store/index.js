@@ -10,6 +10,7 @@ import dialog from './modules/dialog'
 import auth from './modules/auth'
 import group from './modules/group'
 import guard from './modules/guard'
+import childGroup from './modules/child-group'
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -50,7 +51,8 @@ export default new Vuex.Store({
     user,
     auth,
     group,
-    guard
+    guard,
+    childGroup
   },
   strict: debug
 })

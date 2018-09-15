@@ -1,11 +1,8 @@
 <template>
   <div class="container" style="padding-top: 30px">
     <div class="columns">
-      <div class="column is-6">
-        <group-list/>
-      </div>
-      <div class="column is-6">
-        <childern-list/>
+      <div class="column is-12">
+        This is clerk component
       </div>
     </div>
   </div>

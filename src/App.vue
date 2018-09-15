@@ -97,6 +97,10 @@ export default {
       this.$store.dispatch('auth/logout')
     }
   },
+  async created () {
+    await this.$store.dispatch('group/reciveGroups')
+    await this.$store.dispatch('reciveChildrenByGroup')
+  },
   name: 'App'
 }
 </script>
