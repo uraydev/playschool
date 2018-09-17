@@ -2,6 +2,7 @@ export default [
   {
     role: 'clerk',
     menu: [
+      {id: 'm4', icon: 'fa fa-cube', title: 'Управление', link: '/manage'},
       // {id: 'm2', icon: 'fa fa-cube', title: 'Делопроизводитель', link: '/clerk'},
       {id: 'm1', icon: 'fa fa-cube', title: 'Группы', link: '/groups'},
       {id: 'm2', icon: 'fa fa-cube', title: 'Дети', link: '/children'},

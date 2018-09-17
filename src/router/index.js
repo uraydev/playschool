@@ -24,6 +24,7 @@ export default new Router({
     { path: '/groups', name: 'groups', component: () => import('@/components/group/GroupList') },
     { path: '/children', name: 'children', component: () => import('@/components/children/ChildrenList') },
     { path: '/children-group', name: 'children-group', component: () => import('@/components/children-group/ChildrenGroupList') },
+    { path: '/manage', name: 'manage', component: () => import('@/components/manage/Manage') },
     {
       path: '/console',
       children: [
