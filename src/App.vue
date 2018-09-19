@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar is-warning is-fixed-top" role="navigation" aria-label="main navigation">
+    <!-- <nav class="navbar is-warning is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           PlaySchool
@@ -34,7 +34,8 @@
           </div>
         </div>
       </div>
-    </nav>
+    </nav> -->
+    <router-view/>
   </div>
 </template>
 

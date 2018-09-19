@@ -5,15 +5,18 @@ import App from './App'
 import router from './router'
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
+import CardList from './components/common/CardList'
 
 Vue.use(Buefy)
 
 Vue.config.productionTip = false
-
+Vue.component('card-list', CardList)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
