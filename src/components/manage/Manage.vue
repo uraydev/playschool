@@ -32,15 +32,16 @@
   </div>
 </section>
   <div class="columns is-multiline">
-    <div class="column is-3" v-for="child in children" :key="child.id">
+    <div class="column is-2" v-for="child in children" :key="child.id">
       <div class="card">
+        <div class="card-header">
+          {{child.fio}}
+        </div>
           <div class="card-image" style="text-align: center">
-            <img src="https://previews.123rf.com/images/letheann/letheann1108/letheann110800010/10393395-blue-seamless-with-different-kid-s-toys.jpg" alt="Placeholder image">
+            <img src="@/assets/bg1.jpg" alt="Placeholder image">
           </div>
           <div class="card-content">
             <div class="content">
-              {{child.fio}}
-              <br>
               <b-dropdown hoverable class="is-block">
                 <button class="button is-rounded is-info is-fullwidth" slot="trigger">
                     <span class="icon is-large">
