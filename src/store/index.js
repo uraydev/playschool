@@ -8,7 +8,6 @@ import kindergarden from './modules/kindergarden'
 import user from './modules/user'
 import dialog from './modules/dialog'
 import auth from './modules/auth'
-import group from './modules/group'
 import guard from './modules/guard'
 import childGroup from './modules/child-group'
 
@@ -50,7 +49,6 @@ export default new Vuex.Store({
     kindergarden,
     user,
     auth,
-    group,
     guard,
     childGroup
   },

@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      groups: 'group/model'
+      groups: 'getGroups'
     }),
     children () {
       if (this.selectedGroup && this.selectedGroup.children) return this.selectedGroup.children

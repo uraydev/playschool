@@ -10,13 +10,8 @@
 
 <script>
 import ChildernList from '@/components/children/ChildrenList'
-import GroupList from '@/components/group/GroupList'
-// import {mapGetters} from 'vuex'
 
 export default {
-  components: {ChildernList, GroupList},
-  created () {
-    // console.log('ss')
-  }
+  components: {ChildernList}
 }
 </script>
