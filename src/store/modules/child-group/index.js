@@ -9,6 +9,10 @@ const state = {
 
 // actions
 const actions = {
+  addChildInGroup ({commit}, child) {
+    // TO DO save to DB @addChild
+    commit(types.ADD_CHILD_IN_GROUP, child)
+  },
   removeGroup ({commit}, group) {
     groupContext.remove(group).then(x => commit(types.REMOVE_GROUP, x))
   },
@@ -31,6 +35,14 @@ const actions = {
 
 // mutations
 const mutations = {
+  [types.ADD_CHILD_IN_GROUP] (state, payload) {
+    if (state.selectedGroup !== null) {
+      const group = state.groups.find(x => x.id === state.selectedGroup.id)
+      if (group !== null) {
+        group.children.push(payload)
+      }
+    }
+  },
   [types.REMOVE_GROUP] (state, payload) {
     const group = state.groups.find(x => x.id === payload.id)
     if (group !== null) {
@@ -59,7 +71,14 @@ const mutations = {
 // getters
 const getters = {
   getSelectedGroup: state => state.selectedGroup,
-  getGroups: state => state.groups
+  getGroups: state => state.groups,
+  getAllChildren: state => {
+    let childrens = []
+    state.groups.forEach(x => {
+      childrens.push(Object.values(x.children))
+    })
+    return childrens
+  }
 }
 
 export default {

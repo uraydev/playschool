@@ -10,7 +10,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
             </p>
-          </div>
+          </div>          
           <div @click="selectGroup(group)" :class="{'panel-block': true, 'is-active': isCurrent(group)}" v-for="group in groups" :key="group.id" >
             <div class="tile" style="align-items: center" v-if="group.id !== editGroup.id">
               <span class="panel-icon">
@@ -35,14 +35,6 @@
               </div>
             </div>
           </div>
-          <!-- <div @click="selectGroup(group)" :class="{'panel-block': true, 'is-active': isCurrent(group)}" v-for="group in groups" :key="group.id" >
-            <div class="tile" style="align-items: center">
-              <span class="panel-icon">
-                <i class="fa fa-database"></i>
-              </span>
-              {{group.name}}
-            </div>
-          </div> -->
           <div class="panel-block" v-if="hasPermission('GroupListCreate')">
             <a class="button is-info is-fullwidth is-outlined" @click="createNewGroup">
               + Добавить группу
@@ -59,6 +51,21 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
             </p>
+          </div>
+          <div class="panel-block is-block">
+            <b-field >
+              <b-select placeholder="Выберите группу" expanded v-model="selectedChild">
+                  <option
+                      v-for="child in allChildren"
+                      :value="child"
+                      :key="child.id">
+                      {{child.fio}}
+                  </option>
+              </b-select>
+              <p class="control">
+                <button class="button is-success" @click="addChildInGroup">Добавить</button>
+              </p>
+            </b-field>
           </div>
           <div @click="" :class="{'panel-block': true, 'is-active': isCurrent(child)}" v-for="child in children" :key="child.id" >
             <div class="tile" style="align-items: center">
@@ -86,6 +93,7 @@ export default {
         id: null,
         name: null
       },
+      selectedChild: null,
       searchGroup: '',
       searchChild: ''
     }
@@ -100,10 +108,15 @@ export default {
     },
     ...mapGetters({
       groupsModel: 'getGroups',
-      selectedGroup: 'getSelectedGroup'
+      selectedGroup: 'getSelectedGroup',
+      allChildren: 'getChildren'
     })
   },
   methods: {
+    addChildInGroup () {
+      this.$store.dispatch('addChildInGroup', this.selectedChild)
+      this.selectedChild = null
+    },
     removeGroupDialog (group) {
       this.$dialog.confirm({
         title: 'Подтвердите удаление',
@@ -138,12 +151,10 @@ export default {
       this.editGroup = {id: null, name: null}
     }
   },
-  created () {
-    // if (this.groups) this.selectedGroup = this.groups[0]
-  },
   watch: {
     selectedGroup () {
       this.resetEditGroup()
+      this.searchChild = ''
     }
   }
 }

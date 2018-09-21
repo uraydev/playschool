@@ -2,7 +2,7 @@ import context from '../../../api/children'
 import * as types from '../../types'
 
 const state = {
-  model: []
+  children: []
 }
 
 // actions
@@ -14,7 +14,7 @@ const actions = {
     context.store(child).then(x => commit(types.SAVE_CHILD, x))
   },
   newChild ({commit, getters}) {
-    const countChildren = getters.model.length
+    const countChildren = getters.getChildren.length
     const newChild = {id: countChildren + 1, fio: 'Новый ребенов №' + countChildren}
     context.store(newChild).then(x => commit(types.CREATE_CHILD, x))
   },
@@ -26,36 +26,35 @@ const actions = {
 // mutations
 const mutations = {
   [types.RECIVE_CHILDREN] (state, payload) {
-    state.model = payload
+    state.children = payload
   },
   [types.SAVE_CHILD] (state, payload) {
-    const child = state.model.find(x => x.id === payload.id)
+    const child = state.children.find(x => x.id === payload.id)
     if (child !== null) {
       child.fio = payload.fio
       child.dob = payload.dob
     }
   },
   [types.CREATE_CHILD] (state, payload) {
-    state.model.push(payload)
+    state.children.push(payload)
   },
   [types.REMOVE_CHILD] (state, payload) {
-    const child = state.model.find(x => x.id === payload.id)
+    const child = state.children.find(x => x.id === payload.id)
     if (child !== null) {
-      const pos = state.model.indexOf(child)
-      state.model.splice(pos, 1)
+      const pos = state.children.indexOf(child)
+      state.children.splice(pos, 1)
     }
   }
 }
 
 // getters
 const getters = {
-  model: state => state.model
+  getChildren: state => state.children
 }
 
 export default {
   state,
   getters,
   actions,
-  mutations,
-  namespaced: true
+  mutations
 }

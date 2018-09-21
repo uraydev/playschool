@@ -66,7 +66,7 @@ export default {
       return this.model.filter(x => x.fio.indexOf(this.search) > -1)
     },
     ...mapGetters({
-      model: 'child/model'
+      model: 'getChildren'
     })
   },
   data () {
@@ -77,9 +77,6 @@ export default {
       currentEditChildDob: ''
     }
   },
-  async created () {
-    await this.$store.dispatch('child/reciveChildren')
-  },
   methods: {
     showEditor (child) {
       this.currentEditChildId = child.id
@@ -87,7 +84,7 @@ export default {
       this.currentEditChildDob = child.dob
     },
     saveChild (child) {
-      this.$store.dispatch('child/editChild', {id: this.currentEditChildId, fio: this.currentEditChildFio, dob: this.currentEditChildDob})
+      this.$store.dispatch('editChild', {id: this.currentEditChildId, fio: this.currentEditChildFio, dob: this.currentEditChildDob})
       this.resetCurrentChild()
     },
     resetCurrentChild () {
@@ -97,7 +94,7 @@ export default {
     },
     createNewChild () {
       this.search = ''
-      this.$store.dispatch('child/newChild')
+      this.$store.dispatch('newChild')
     },
     removeChildDialog (child) {
       this.$dialog.confirm({
@@ -108,7 +105,7 @@ export default {
       })
     },
     removeChild (child) {
-      this.$store.dispatch('child/removeChild', child)
+      this.$store.dispatch('removeChild', child)
     }
   }
 }

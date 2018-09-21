@@ -98,8 +98,8 @@ export default {
     }
   },
   async created () {
-    // await this.$store.dispatch('group/reciveGroups')
     await this.$store.dispatch('reciveGroups')
+    await this.$store.dispatch('reciveChildren')
   },
   name: 'App'
 }
