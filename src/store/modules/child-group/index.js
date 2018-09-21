@@ -9,6 +9,10 @@ const state = {
 
 // actions
 const actions = {
+  removeChildFromGroup ({commit}, child) {
+    // TO DO remove DB @removeChild
+    commit(types.REMOVE_CHILD_FROM_GROUP, child)
+  },
   addChildInGroup ({commit}, child) {
     // TO DO save to DB @addChild
     commit(types.ADD_CHILD_IN_GROUP, child)
@@ -35,6 +39,18 @@ const actions = {
 
 // mutations
 const mutations = {
+  [types.REMOVE_CHILD_FROM_GROUP] (state, payload) {
+    if (state.selectedGroup !== null) {
+      const group = state.groups.find(x => x.id === state.selectedGroup.id)
+      if (group !== null) {
+        const child = group.children.find(x => x.id === payload.id)
+        if (child !== null) {
+          const pos = group.children.indexOf(child)
+          group.children.splice(pos, 1)
+        }
+      }
+    }
+  },
   [types.ADD_CHILD_IN_GROUP] (state, payload) {
     if (state.selectedGroup !== null) {
       const group = state.groups.find(x => x.id === state.selectedGroup.id)

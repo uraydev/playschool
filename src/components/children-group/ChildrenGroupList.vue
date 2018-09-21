@@ -73,6 +73,9 @@
                 <i class="fa fa-database"></i>
               </span>
               {{child.fio}}
+              <div style="margin-left: auto"  v-if="hasPermission('ChildrenListEdit')">
+                <i class="is-pulled-right fa fa-remove" @click="removeChildDialog(child)">&nbsp;</i>
+              </div>
             </div>
           </div>
         </aside>
@@ -149,6 +152,17 @@ export default {
     },
     resetEditGroup () {
       this.editGroup = {id: null, name: null}
+    },
+    removeChildDialog (child) {
+      this.$dialog.confirm({
+        title: 'Подтвердите удаление',
+        message: 'Удалить ребенка из списка?',
+        type: 'is-success',
+        onConfirm: () => this.removeChild(child)
+      })
+    },
+    removeChild (child) {
+      this.$store.dispatch('removeChildFromGroup', child)
     }
   },
   watch: {
