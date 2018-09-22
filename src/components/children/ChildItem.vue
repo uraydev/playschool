@@ -13,7 +13,7 @@
             <b-field>
                 <a class="button is-success is-fullwidth is-rounded" @click="saveChildData">
                   <span class="icon is-large">
-                    <i class="is-pulled-right fa fa-pencil"></i>  
+                    <i class="is-pulled-right fa fa-check"></i>  
                   </span>
                   <span>
                     Сохранить            
