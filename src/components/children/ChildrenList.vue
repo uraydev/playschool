@@ -21,6 +21,7 @@
               <div style="margin-left: auto"  v-if="hasPermission('ChildrenListEdit')">
                 <i class="is-pulled-right fa fa-remove" @click="removeChildDialog(child)">&nbsp;</i>
                 <i class="is-pulled-right fa fa-pencil" @click="showEditor(child)">&nbsp;</i>
+                <router-link :to="'/child/' + child.id"><i class="is-pulled-right fa fa-address-card-o">&nbsp;</i></router-link>                
               </div>
             </div>
             <div class="tile is-vertical" v-if="child.id === currentEditChildId">
@@ -31,7 +32,7 @@
               </div>
               <div class="field">
                 <div class="control">
-                  <b-datepicker placeholder="Дата рождения" icon="calendar-today" v-model="currentEditChildDob"> </b-datepicker>
+                  <b-datepicker placeholder="Дата рождения" icon="calendar" v-model="currentEditChildDob"> </b-datepicker>
                 </div>
               </div>
               <div class="field">

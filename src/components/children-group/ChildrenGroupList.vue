@@ -54,7 +54,7 @@
           </div>
           <div class="panel-block is-block">
             <b-field >
-              <b-select placeholder="Выберите группу" expanded v-model="selectedChild">
+              <b-select placeholder="Выберите ребенка" expanded v-model="selectedChild">
                   <option
                       v-for="child in allChildren"
                       :value="child"

@@ -22,6 +22,7 @@ export default new Router({
     { path: '/other', name: 'other', component: () => import('@/components/dashboard/OtherModule') },
     { path: '/clerk', name: 'clerk', component: () => import('@/components/dashboard/ClerkComponent') },
     { path: '/children', name: 'children', component: () => import('@/components/children/ChildrenList') },
+    { path: '/child/:id', name: 'child', props: true, component: () => import('@/components/children/ChildItem') },
     { path: '/children-group', name: 'children-group', component: () => import('@/components/children-group/ChildrenGroupList') },
     { path: '/manage', name: 'manage', component: () => import('@/components/manage/Manage') },
     {

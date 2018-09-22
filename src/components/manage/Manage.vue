@@ -13,7 +13,7 @@
                 </option>
             </b-select>
           <div>
-            <b-datepicker placeholder="Дата рождения" icon="calendar-today" v-model="selectedDay"> </b-datepicker>
+            <b-datepicker placeholder="Дата" icon="calendar" v-model="selectedDay"> </b-datepicker>
           </div>
         </div>
       </div>

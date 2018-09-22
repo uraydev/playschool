@@ -11,7 +11,10 @@ const actions = {
     context.reciveChildren().then(x => commit(types.RECIVE_CHILDREN, x))
   },
   editChild ({commit}, child) {
-    context.store(child).then(x => commit(types.SAVE_CHILD, x))
+    return new Promise((resolve) => {
+      context.store(child).then(x => commit(types.SAVE_CHILD, x))
+      resolve()
+    })
   },
   newChild ({commit, getters}) {
     const countChildren = getters.getChildren.length
@@ -33,6 +36,8 @@ const mutations = {
     if (child !== null) {
       child.fio = payload.fio
       child.dob = payload.dob
+      child.illness = payload.illness
+      child.other = payload.other
     }
   },
   [types.CREATE_CHILD] (state, payload) {
@@ -49,7 +54,8 @@ const mutations = {
 
 // getters
 const getters = {
-  getChildren: state => state.children
+  getChildren: state => state.children,
+  getChildById: state => id => state.children.find(x => x.id === id)
 }
 
 export default {
