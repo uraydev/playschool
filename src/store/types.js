@@ -1,3 +1,10 @@
+// Users
+export const RECIVE_USERS = 'RECIVE_USERS'
+export const REMOVE_USER = 'REMOVE_USER'
+export const CREATE_USER = 'CREATE_USER'
+export const SAVE_USER = 'SAVE_USER'
+export const CHANGE_LOCK_STATUS_USER = 'CHANGE_LOCK_STATUS_USER'
+
 // Children
 export const REMOVE_CHILD_FROM_GROUP = 'REMOVE_CHILD_FROM_GROUP'
 export const ADD_CHILD_IN_GROUP = 'ADD_CHILD_IN_GROUP'

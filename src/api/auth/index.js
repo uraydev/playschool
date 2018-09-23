@@ -7,38 +7,63 @@ export default {
         resolve(users.find(x => user === x.id))
       })
     }
+  },
+  reciveUsers () {
+    return new Promise((resolve) => {
+      resolve(users)
+    })
+  },
+  update (item) {
+    return new Promise((resolve) => {
+      resolve(item)
+    })
+  },
+  remove (item) {
+    return new Promise((resolve) => {
+      resolve(item)
+    })
   }
 }
 
 const users = [
   {
     id: 'u1',
-    email: 'login1',
+    email: 'emai1@mail.ru',
     fio: 'Иванов Иван Иванович',
-    role: 'clerk'
+    role: 'clerk',
+    isLocked: false,
+    password: '123'
   },
   {
     id: 'u2',
-    email: 'login2',
+    email: 'emai2@mail.ru',
     fio: 'Петров Петр Петрович',
-    role: 'doctor'
+    role: 'doctor',
+    isLocked: true,
+    password: '123'
   },
   {
     id: 'u3',
-    email: 'login3',
+    email: 'emai3@mail.ru',
     fio: 'Сергеев Сергей Сергеевич',
-    role: 'supplier'
+    role: 'supplier',
+    isLocked: false,
+    password: '123'
   },
   {
     id: 'u4',
-    email: 'login4',
+    email: 'emai4@mail.ru',
     fio: 'Александров Александ',
-    role: 'teacher'
+    role: 'teacher',
+    isLocked: false,
+    password: '123'
   },
   {
     id: 'u5',
-    email: 'login5',
+    email: 'emai5@mail.ru',
     fio: 'Админов Админ',
-    role: 'admin'
+    role: 'admin',
+    isLocked: false,
+    password: '123'
   }
 ]

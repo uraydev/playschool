@@ -100,6 +100,7 @@ export default {
   async created () {
     await this.$store.dispatch('reciveGroups')
     await this.$store.dispatch('reciveChildren')
+    await this.$store.dispatch('reciveUsers')
   },
   name: 'App'
 }

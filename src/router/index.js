@@ -25,6 +25,8 @@ export default new Router({
     { path: '/child/:id', name: 'child', props: true, component: () => import('@/components/children/ChildItem') },
     { path: '/children-group', name: 'children-group', component: () => import('@/components/children-group/ChildrenGroupList') },
     { path: '/manage', name: 'manage', component: () => import('@/components/manage/Manage') },
+    { path: '/users', name: 'users', component: () => import('@/components/user/UserList') },
+    { path: '/user/:id', name: 'user', props: true, component: () => import('@/components/user/UserItem') },
     {
       path: '/console',
       children: [
